@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  const myName = "Mason";
+
+  const toDoList = [
+    {
+      id: 1,
+      title: "task1",
+      description: "description1"
+    },
+    {
+      id: 2,
+      title: "task2",
+      description: "description2"
+    },
+    {
+      id: 3,
+      title: "task3",
+      description: "description3"
+    }
+  ];
+
+  const taskManager = () => {
+    const int = Math.floor(Math.random() * 3);
+    return toDoList[int].title;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="random">
+      <p>Hello {myName} you have a task of <h3>{taskManager()}</h3></p>
     </div>
   );
 }
