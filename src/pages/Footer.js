@@ -1,6 +1,5 @@
 import React from "react";
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaInfoCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 export default function footer() {
     return (
@@ -11,11 +10,6 @@ export default function footer() {
                 <FaInstagram size={30} />
                 <FaTwitter size={30} />
                 <FaLinkedin size={30} />
-
-                {/* To do: comment here... */}
-                <Link to="/about" style={{ color: "white" }}>
-                    <FaInfoCircle size={30} />
-                </Link>
             </div>
         </div>
     )

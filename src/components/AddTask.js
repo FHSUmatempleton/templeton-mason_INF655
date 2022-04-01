@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import TaskContext from "./context/TaskContext";
 import Card from "./shared/Card";
 
-export default function AddTask({ handleAdd }) {
+export default function AddTask() {
     //  Set up empty states (default states) for the input fields
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
@@ -10,17 +10,14 @@ export default function AddTask({ handleAdd }) {
     // To do: comment here...
     const { addTask, taskEdit, updateTask } = useContext(TaskContext);
 
-    // To do: comment here...
     const handleTaskTitleChange = (event) => {
         setTaskTitle(event.target.value);
     }
 
-    // To do: comment here...
     const handleTaskDescChange = (event) => {
         setTaskDescription(event.target.value);
     }
 
-    // To do: comment here...
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -39,6 +36,7 @@ export default function AddTask({ handleAdd }) {
         }
     };
 
+    // To do: comment here...
     useEffect(() => {
         if (taskEdit.edit) {
             setTaskTitle(taskEdit.task.title);

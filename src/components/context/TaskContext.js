@@ -3,9 +3,14 @@ import TaskData from "../TaskData";
 
 const TaskContext = createContext();
 
-/* To do: purpose and function here... */
+/**
+ * TaskProvider:
+ * @param {*} param0 
+ * @returns 
+ */
 export const TaskProvider = ({ children }) => {
-    // To do: comment here...
+    
+    // State variables
     const [taskList, setTaskList] = useState(TaskData);
     const [taskID, setTaskID] = useState(4);
     const [taskEdit, setTaskEdit] = useState({
@@ -13,7 +18,10 @@ export const TaskProvider = ({ children }) => {
         edit: false
     });
 
-    // To do: commment here...
+    /**
+     * addTask: appends newTask to taskList and increment taskID
+     * @param {*} newTask 
+     */
     const addTask = (newTask) => {
         setTaskID((prev) => {
             return prev + 1;
@@ -21,25 +29,38 @@ export const TaskProvider = ({ children }) => {
         newTask.id = taskID;
         setTaskList([...taskList, newTask]);
     };
-
-    // To do: comment here...
+    
+    /**
+     * editTask: sets task edit prop
+     * @param {*} task 
+     */
     const editTask = (task) => {
         setTaskEdit({ task, edit: true });
     }
 
-    // To do: commment here...
-    const updateTask = (id, updTaskList) => {
+    /**
+     * updateTask: set task with param id to match updTask entries
+     * @param {*} id 
+     * @param {*} updTask 
+     */
+    const updateTask = (id, updTask) => {
         setTaskList(taskList.map((task) =>
-            task.id === id ? { ...task, ...updTaskList } : task
+            task.id === id ? { ...task, ...updTask } : task
          ));
     };
 
-    // To do: comment here...
+    /**
+     * deleteTask: removes task from taskList with matching param id
+     * @param {*} id 
+     */
     const deleteTask = (id) => {
          setTaskList(taskList.filter( (task) => task.id !== id ));
     };
     
-    // To do: comment here...
+    /**
+     * checkTask: toggles isChecked prop of task with matching param id
+     * @param {*} id 
+     */
     const checkTask = (id) => {
         setTaskList(taskList.map((task) =>
             task.id === id ? { ...task, isChecked: !task.isChecked } : task
@@ -47,7 +68,7 @@ export const TaskProvider = ({ children }) => {
     };
 
     return (
-        // To do: comment here...
+        // Context provider
         <TaskContext.Provider value={{ taskList, taskEdit, addTask, editTask, updateTask, deleteTask, checkTask }}>
             {children}
         </TaskContext.Provider>

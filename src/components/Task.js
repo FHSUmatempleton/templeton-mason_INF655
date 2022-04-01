@@ -24,8 +24,8 @@ export default function Task({ task, id, title, description, isChecked }) {
 }
 
 Task.propTypes = {
-    id: PropTypes.number,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    isChecked: PropTypes.bool
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    isChecked: PropTypes.bool.isRequired
 };

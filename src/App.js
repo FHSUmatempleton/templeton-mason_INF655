@@ -7,10 +7,9 @@ import User from "./userbase/User";
 
 function App() {
   return (
-    // To do: long-wided explanation about TaskProvider?
     <TaskProvider>
-      
-      {/* To do: long-winded explanation about BrowserRouter, Routes, and Route... */}
+
+      {/* To do: long-winded explanation of function of BrowserRouter, Routes, and Route... */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

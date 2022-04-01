@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 export default function Navigation() {
     return (
         <div className="navigation">
-            {/* To do: long-winded explanation about links? */}
-
             <Card>
                 <p>
                     <Link to="/">Home</Link>
