@@ -1,44 +1,35 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import TaskContext from "./context/TaskContext";
+import SearchTask from "./SearchTask";
 import Task from "./Task";
-import TaskData from "./TaskData";
 
 export default function TaskForm() {
-    //  Set up empty states (default states) for the input fields
-    const [taskList, setTaskList] = useState(TaskData);
-    const [taskID, setTaskID] = useState(3)
-    const [taskTitle, setTaskTitle] = useState("");
-    const [taskDescription, setTaskDescription] = useState("");
+    // To do: comment here...
+    const { taskList } = useContext(TaskContext);
+    const [search, setSearch] = useState("");
 
-    const handleTask = (event) => {
-        event.preventDefault();
+    // To do: comment here...
+    const result = taskList.filter((task) => task.title.includes(search))
 
-        setTaskID((prev) => {
-            return prev + 1;
-        })
-
-        setTaskList([...taskList, {id: taskID, title: taskTitle, description: taskDescription}]);
-    };
-    
-    
-    if (!taskList) {
+    if (!result || result.length === 0) {
         return <p>No tasks</p>;
     }
+    
     return (
-        <span>
-            {taskList.map((task) => (
-                <Task id={task.id} title={task.title} description={task.description} />
+        <div>
+            <SearchTask search={search} setSearch={setSearch} />
+            {result.map((task) => (
+                <Task
+                    // to do: comment here...
+                    task={task}
+                    
+                    key={task.id}
+                    id={task.id}
+                    title={task.title}
+                    description={task.description}
+                    isChecked={task.isChecked}
+                />
             ))}
-            <form onSubmit={handleTask}>
-                <label>Title:
-                    <input type="text" id="title" onChange={event => setTaskTitle(event.target.value)} />
-                </label>
-
-                <label>Description:
-                    <input type="text" id="description" onChange={event => setTaskDescription(event.target.value)} />
-                </label>
-
-                <input type="submit" value="Add task" />
-            </form>
-        </span>
+        </div>
     )
 }
